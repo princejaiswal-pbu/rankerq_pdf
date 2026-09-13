@@ -1,27 +1,49 @@
-import Card from '../ui/Card.jsx'
 import { Link } from 'react-router-dom'
+import Container from '../layout/Container.jsx'
+import './tools-grid.css'
 
-const tools = [
-  { id: 'merge', title: 'Merge PDF', desc: 'Combine multiple PDFs into one', icon: '🔗', path: '/tools/merge' },
-  { id: 'split', title: 'Split PDF', desc: 'Separate pages into new PDFs', icon: '✂️', path: '/tools/split' },
-  { id: 'compress', title: 'Compress PDF', desc: 'Reduce file size without losing quality', icon: '📦', path: '/tools/compress' },
-  { id: 'convert', title: 'Convert PDF', desc: 'PDF to Word, JPG, Excel & more', icon: '🔄', path: '/tools/convert' },
+const TOOLS = [
+  {
+    to: '/tools/merge',
+    title: 'Merge PDF',
+    desc: 'Combine multiple PDFs into a single file, in the order you choose.',
+  },
+  {
+    to: '/tools/split',
+    title: 'Split PDF',
+    desc: 'Pull pages out into their own files, or break one PDF into several.',
+  },
+  {
+    to: '/tools/compress',
+    title: 'Compress PDF',
+    desc: 'Shrink a PDF for email or upload limits without losing legibility.',
+  },
+  {
+    to: '/tools/convert',
+    title: 'Convert to PDF',
+    desc: 'Turn a batch of images into one clean, ordered PDF document.',
+  },
 ]
 
 export default function ToolsGrid() {
   return (
-    <section style={{ padding: '40px 0' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' }}>
-        {tools.map(t => (
-          <Link key={t.id} to={t.path}>
-            <Card style={{ ':hover': { borderColor: 'var(--color-primary)' } }}>
-              <div style={{ fontSize: '1.75rem' }}>{t.icon}</div>
-              <h3 style={{ marginTop: '12px', fontWeight: 700 }}>{t.title}</h3>
-              <p style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem', marginTop: '6px' }}>{t.desc}</p>
-            </Card>
-          </Link>
-        ))}
-      </div>
+    <section className="tools-grid-section">
+      <Container>
+        <div className="section-heading">
+          <h2>Four tools, one tab.</h2>
+          <p>Pick a task — the file picker does the rest.</p>
+        </div>
+
+        <div className="tools-grid">
+          {TOOLS.map((tool) => (
+            <Link key={tool.to} to={tool.to} className="tool-card">
+              <span className="tool-card__title">{tool.title}</span>
+              <span className="tool-card__desc">{tool.desc}</span>
+              <span className="tool-card__arrow" aria-hidden="true">↗</span>
+            </Link>
+          ))}
+        </div>
+      </Container>
     </section>
   )
 }

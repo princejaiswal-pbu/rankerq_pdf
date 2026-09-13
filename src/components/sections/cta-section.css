@@ -1,0 +1,32 @@
+.cta {
+  margin: var(--space-6) 0;
+  padding: var(--space-6) 0;
+  background: var(--color-orange);
+  border-radius: var(--radius-lg);
+}
+
+.cta__inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.cta h2 {
+  color: var(--color-white);
+  font-size: var(--fs-h2);
+  max-width: 20ch;
+}
+
+.cta p {
+  color: var(--color-orange-tint);
+  max-width: 40ch;
+}
+
+.cta .btn--primary {
+  margin-top: var(--space-2);
+  background: var(--color-white);
+  color: var(--color-orange-deep);
+}
+.cta .btn--primary:hover { background: var(--color-orange-tint); }

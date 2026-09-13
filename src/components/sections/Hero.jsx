@@ -1,22 +1,43 @@
-import Button from '../ui/Button.jsx'
-import Container from '../layout/Container.jsx'
 import { Link } from 'react-router-dom'
+import Container from '../layout/Container.jsx'
+import Button from '../ui/Button.jsx'
+import './hero.css'
 
 export default function Hero() {
   return (
-    <section style={{ padding: '80px 0', background: 'linear-gradient(180deg, var(--color-bg-muted) 0%, white 100%)' }}>
-      <Container>
-        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto' }}>
-          <span style={{ background: 'var(--color-primary-light)', color: 'var(--color-primary)', padding: '6px 12px', borderRadius: '999px', fontSize: '0.875rem', fontWeight: 600 }}>100% Free • No Signup</span>
-          <h1 style={{ fontSize: '3rem', fontWeight: 800, lineHeight: 1.1, marginTop: '20px' }}>
-            Every tool you need to work with <span style={{ color: 'var(--color-primary)' }}>PDFs</span>
+    <section className="hero">
+      <Container className="hero__inner">
+        <div className="hero__copy">
+          <h1 className="hero__title">
+            Your PDFs, handled
+            <br />
+            without leaving the tab.
           </h1>
-          <p style={{ color: 'var(--color-text-muted)', fontSize: '1.125rem', marginTop: '16px' }}>
-            Merge, split, compress, convert and edit PDFs. Fast, secure, and works right in your browser.
+          <p className="hero__subtitle">
+            Merge, split, compress and convert — every tool runs locally in your
+            browser. No uploads, no waiting on a server, no account required.
           </p>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '28px' }}>
-            <Link to="/tools/merge"><Button>Start Merging</Button></Link>
-            <Link to="/pricing"><Button variant="secondary">View Pricing</Button></Link>
+          <div className="hero__actions">
+            <Button as={Link} to="/tools/merge" size="lg">
+              Merge two PDFs now
+            </Button>
+            <Button as={Link} to="/tools/convert" variant="secondary" size="lg">
+              Convert images to PDF
+            </Button>
+          </div>
+          <p className="hero__note">No sign-up. No file size games. Free for files under 50&nbsp;MB.</p>
+        </div>
+
+        <div className="hero__visual" aria-hidden="true">
+          <div className="hero__stack">
+            <div className="hero__page hero__page--back" />
+            <div className="hero__page hero__page--mid" />
+            <div className="hero__page hero__page--front">
+              <div className="hero__page-line" style={{ width: '70%' }} />
+              <div className="hero__page-line" style={{ width: '92%' }} />
+              <div className="hero__page-line" style={{ width: '55%' }} />
+              <div className="hero__page-chip">PDF</div>
+            </div>
           </div>
         </div>
       </Container>

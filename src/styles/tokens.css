@@ -1,42 +1,42 @@
 :root {
-  /* Orange / White Palette */
-  --color-primary: #FF6B2B;
-  --color-primary-hover: #E85E24;
-  --color-primary-light: #FFF0E9;
-  --color-primary-soft: #FF8A5B;
-  --color-bg: #FFFFFF;
-  --color-bg-muted: #FFF7F3;
-  --color-text: #1A1A1A;
-  --color-text-muted: #6B7280;
-  --color-border: #FFE0D1;
-  --color-card: #FFFFFF;
-  --color-success: #10B981;
-  --color-error: #EF4444;
+  /* Color — warm white base, one confident orange, near-black ink */
+  --color-white: #FFFBF7;
+  --color-white-raised: #FFFFFF;
+  --color-ink: #241C15;
+  --color-ink-soft: #4A4038;
+  --color-muted: #8A8078;
+  --color-line: #EBE3DA;
 
-  /* Spacing */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2.5rem;
-  --space-2xl: 4rem;
+  --color-orange: #E8590C;
+  --color-orange-deep: #B8430A;
+  --color-orange-tint: #FFE8D6;
+  --color-orange-tint-soft: #FFF3EA;
+
+  --color-success: #2E7D4F;
+  --color-error: #C33A2C;
 
   /* Type */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
-  --radius-sm: 8px;
+  --fs-hero: clamp(2.75rem, 5vw + 1rem, 5rem);
+  --fs-h1: clamp(2.25rem, 3vw + 1rem, 3.25rem);
+  --fs-h2: clamp(1.5rem, 1.5vw + 1rem, 2.25rem);
+  --fs-h3: 1.25rem;
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --radius-sm: 6px;
   --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --radius-lg: 20px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
+
+  --shadow-card: 0 1px 2px rgba(36, 28, 21, 0.06), 0 8px 24px rgba(36, 28, 21, 0.04);
 }

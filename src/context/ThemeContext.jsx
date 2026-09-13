@@ -1,17 +1,14 @@
-import { createContext, useState, useContext, useEffect } from 'react'
+import { createContext, useContext, useMemo } from 'react'
 
-const ThemeContext = createContext()
+// The site currently ships a single orange & white theme. This context
+// exists as a seam for a future dark mode without reshaping components.
+const ThemeContext = createContext({ theme: 'orange-white' })
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('light')
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme
-  }, [theme])
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggle: () => setTheme(t => t === 'light' ? 'dark' : 'light') }}>
-      {children}
-    </ThemeContext.Provider>
-  )
+  const value = useMemo(() => ({ theme: 'orange-white' }), [])
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
 
-export const useTheme = () => useContext(ThemeContext)
+export function useTheme() {
+  return useContext(ThemeContext)
+}

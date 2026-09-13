@@ -1,12 +1,41 @@
+import Container from '../layout/Container.jsx'
+import Card from '../ui/Card.jsx'
+import './testimonials.css'
+
+const QUOTES = [
+  {
+    quote: 'I stopped emailing myself PDF fragments. Split, done, downloaded.',
+    name: 'Priya N.',
+    role: 'Paralegal',
+  },
+  {
+    quote: 'Compressing scanned contracts used to mean a whole other app. Not anymore.',
+    name: 'Daniel O.',
+    role: 'Operations lead',
+  },
+  {
+    quote: 'The fact it never uploads anywhere is the whole pitch for our team.',
+    name: 'Mei T.',
+    role: 'IT admin',
+  },
+]
+
 export default function Testimonials() {
   return (
-    <section style={{ padding: '60px 0' }}>
-      <h2 style={{ textAlign: 'center', fontWeight: 800, fontSize: '1.75rem' }}>Loved by 2M+ users</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginTop: '24px' }}>
-        <div style={{ border: '1px solid var(--color-border)', padding: '20px', borderRadius: '12px' }}>"Super fast merge, no watermark!" — Priya S.</div>
-        <div style={{ border: '1px solid var(--color-border)', padding: '20px', borderRadius: '12px' }}>"Compress cut my 50MB file to 4MB." — Aman K.</div>
-        <div style={{ border: '1px solid var(--color-border)', padding: '20px', borderRadius: '12px' }}>"Clean UI, love the orange theme." — Rahul M.</div>
-      </div>
+    <section className="testimonials">
+      <Container>
+        <div className="section-heading">
+          <h2>People who'd rather not upload their contracts</h2>
+        </div>
+        <div className="testimonials__grid">
+          {QUOTES.map((t) => (
+            <Card key={t.name} className="testimonial-card">
+              <p className="testimonial-card__quote">“{t.quote}”</p>
+              <p className="testimonial-card__meta">{t.name} — {t.role}</p>
+            </Card>
+          ))}
+        </div>
+      </Container>
     </section>
   )
 }

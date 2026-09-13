@@ -1,7 +1,12 @@
-export default function ProgressBar({ value = 0 }) {
+import './progress-bar.css'
+
+export default function ProgressBar({ value = 0, label }) {
   return (
-    <div style={{ width: '100%', height: '8px', background: 'var(--color-border)', borderRadius: '999px', overflow: 'hidden' }}>
-      <div style={{ width: `${value}%`, height: '100%', background: 'var(--color-primary)', transition: 'width 0.3s' }} />
+    <div className="progress">
+      {label && <div className="progress__label">{label}</div>}
+      <div className="progress__track">
+        <div className="progress__fill" style={{ width: `${Math.min(100, Math.max(0, value))}%` }} />
+      </div>
     </div>
   )
 }

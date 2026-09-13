@@ -1,34 +1,40 @@
-# PDF Website — Orange / White Theme
+# Pilo — PDF tools website
 
-Vite + React PDF toolkit scaffold.
+A React (Vite) website for merging, splitting, compressing and converting
+PDFs entirely in the browser. Orange & white visual theme.
 
-## Structure
-```
-pdf-website/
-├── public/
-│   ├── favicon.svg
-│   └── og-image.png
-├── src/
-│   ├── assets/icons/ (merge, split, compress, convert)
-│   ├── components/layout/ (Navbar, Footer, Container)
-│   ├── components/ui/ (Button, Card, UploadDropzone, ProgressBar)
-│   ├── components/sections/ (Hero, ToolsGrid, HowItWorks, Testimonials, CTASection)
-│   ├── pages/tools/ (MergePDF, SplitPDF, CompressPDF, ConvertPDF)
-│   ├── hooks/ (useFileUpload, usePdfProcessor)
-│   ├── lib/ (pdfUtils, api)
-│   ├── context/ThemeContext
-│   ├── router/routes
-│   └── styles/ (tokens.css, globals.css)
-```
+## Getting started
 
-## Get Started
 ```bash
 npm install
 npm run dev
 ```
 
-- Tokens: see `src/styles/tokens.css` — orange/white palette, type scale, spacing
-- PDF logic: `src/lib/pdfUtils.js` wraps pdf-lib (client-side, secure)
-- Add tools in `src/pages/tools/` and register in `router/routes.jsx`
+Then open http://localhost:5173.
 
-Built for fast, private, in-browser PDF processing.
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Stack
+
+- React 18 + React Router
+- Vite
+- pdf-lib (PDF read/write in the browser)
+- jszip + file-saver (packaging and downloading results)
+
+## Structure
+
+See `src/` — pages live in `src/pages`, reusable UI in `src/components/ui`,
+page sections in `src/components/sections`, and the PDF logic in
+`src/lib/pdfUtils.js`.
+
+## Notes
+
+- All processing happens client-side; no file is ever uploaded to a server.
+- Compress is a best-effort re-save (object streams); it will not shrink
+  PDFs whose size is mostly large embedded images as much as a
+  server-side raster-recompression pipeline would.

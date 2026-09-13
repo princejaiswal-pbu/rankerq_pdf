@@ -1,25 +1,30 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
-export default function useFileUpload(onFiles) {
+/**
+ * Small helper hook for managing a list of selected files
+ * (adding, removing, reordering, clearing).
+ */
+export function useFileUpload() {
   const [files, setFiles] = useState([])
-  const [isDragging, setIsDragging] = useState(false)
 
-  const handleFiles = (fileList) => {
-    const arr = Array.from(fileList)
-    setFiles(arr)
-    onFiles?.(arr)
-  }
+  const addFiles = useCallback((newFiles) => {
+    setFiles((prev) => [...prev, ...newFiles])
+  }, [])
 
-  return {
-    files,
-    isDragging,
-    handleDrop: (e) => {
-      e.preventDefault()
-      setIsDragging(false)
-      handleFiles(e.dataTransfer.files)
-    },
-    handleDragOver: (e) => { e.preventDefault(); setIsDragging(true) },
-    handleDragLeave: () => setIsDragging(false),
-    handleInputChange: (e) => handleFiles(e.target.files)
-  }
+  const removeFile = useCallback((index) => {
+    setFiles((prev) => prev.filter((_, i) => i !== index))
+  }, [])
+
+  const moveFile = useCallback((from, to) => {
+    setFiles((prev) => {
+      const next = [...prev]
+      const [moved] = next.splice(from, 1)
+      next.splice(to, 0, moved)
+      return next
+    })
+  }, [])
+
+  const clearFiles = useCallback(() => setFiles([]), [])
+
+  return { files, addFiles, removeFile, moveFile, clearFiles }
 }

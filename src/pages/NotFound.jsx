@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom'
+import Container from '../components/layout/Container.jsx'
+import Button from '../components/ui/Button.jsx'
+import './static-page.css'
 
 export default function NotFound() {
   return (
-    <div style={{ height: '100vh', display: 'grid', placeItems: 'center', textAlign: 'center' }}>
-      <div>
-        <h1 style={{ fontSize: '4rem', fontWeight: 800 }}>404</h1>
-        <p style={{ color: 'var(--color-text-muted)' }}>Page not found</p>
-        <Link to="/" style={{ color: 'var(--color-primary)', fontWeight: 600, marginTop: '12px', display: 'inline-block' }}>Go Home</Link>
-      </div>
-    </div>
+    <Container className="static-page">
+      <h1>That page doesn't exist.</h1>
+      <p>The link might be old, or the page may have moved.</p>
+      <Button as={Link} to="/" size="md" style={{ alignSelf: 'flex-start' }}>
+        Back to home
+      </Button>
+    </Container>
   )
 }
