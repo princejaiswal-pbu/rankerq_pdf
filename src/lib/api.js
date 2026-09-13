@@ -1,0 +1,10 @@
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+
+export async function apiFetch(path, opts = {}) {
+  const res = await fetch(`${API_BASE}${path}`, {
+    headers: { 'Content-Type': 'application/json', ...(opts.headers || {}) },
+    ...opts
+  })
+  if (!res.ok) throw new Error(await res.text())
+  return res.json()
+}
